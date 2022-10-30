@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from "react";
+import "./App.css";
+import QuoteBox from "./QuoteBox";
 function App() {
+  const [mainColor, setMainColor] = useState("#16a085");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <div className="app" style={{ backgroundColor: mainColor }}>
+      <div className="quote">
+        <QuoteBox changeColor={(color) => setMainColor(color)} />
+        {/* <p>by mnabil711</p> */}
+        <span>by </span>
+        <a href="https://github.com/mnabil711" target="_blank" rel="noreferrer">
+          mnabil711
         </a>
-      </header>
+      </div>
     </div>
   );
 }
