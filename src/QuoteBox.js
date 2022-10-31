@@ -20,18 +20,24 @@ const QuoteBox = ({ changeColor }) => {
   ];
 
   const [newQuote, setNewQuote] = useState("");
-  const [newColor, setNewColor] = useState("#16a085");
+  const [newColor, setNewColor] = useState("");
 
-  const getQuote = () => {
-    fetch(api)
-      .then((res) => res.json())
-      .then((data) => {
-        setNewQuote(data[Math.floor(Math.random() * data.length)]);
-      });
-  };
+  async function getQuote() {
+    try {
+      const res = await fetch(api);
+      const data = await res.json();
+      setNewQuote(data[Math.floor(Math.random() * data.length)]);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   useEffect(() => {
     getQuote();
+  }, []);
+
+  useEffect(() => {
+    setNewColor(colors[Math.floor(Math.random() * colors.length)]);
   }, []);
 
   useEffect(() => {
