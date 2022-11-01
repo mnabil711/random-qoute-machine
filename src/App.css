@@ -6,7 +6,7 @@
   align-items: center;
   height: 100vh;
   color: white;
-  
+   width: 100vw;
 }
 .quote{
   text-align: center;
